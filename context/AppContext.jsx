@@ -138,14 +138,21 @@ export const AppContextProvider = (props) => {
   };
 
   const getCartAmount = () => {
+    if (!products || products.length === 0) return 0;
+
     let totalAmount = 0;
-    for (const items in cartItems) {
-      let itemInfo = products.find((product) => product._id === items);
-      if (cartItems[items] > 0) {
-        totalAmount += itemInfo.offerPrice * cartItems[items];
+    for (const itemId in cartItems) {
+      const itemInfo = products.find((product) => product._id === itemId);
+
+      // If the product is not found, continue to the next item
+      if (!itemInfo) continue;
+
+      if (cartItems[itemId] > 0) {
+        totalAmount += itemInfo.offerPrice * cartItems[itemId];
       }
     }
-    return Math.floor(totalAmount * 100) / 100;
+
+    return Math.floor(totalAmount * 100) / 100; // Return rounded amount
   };
 
   useEffect(() => {

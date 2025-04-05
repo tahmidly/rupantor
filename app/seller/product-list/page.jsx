@@ -14,6 +14,31 @@ const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const handleDelete = async (productId) => {
+    // Confirm deletion
+    if (!confirm('Are you sure you want to delete this product?')) return;
+
+    try {
+      const token = await getToken();
+      const { data } = await axios.delete(`/api/product/${productId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (data.success) {
+        toast.success('Product deleted');
+
+        // Refetch the product list after successful deletion
+        fetchSellerProduct(); // This will refresh the product list from the backend
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || error.message);
+    }
+  };
+
   const fetchSellerProduct = async () => {
     try {
       const token = await getToken();
@@ -80,6 +105,14 @@ const ProductList = () => {
                       >
                         <span className="hidden md:block">Visit</span>
                         <Image className="h-3.5" src={assets.redirect_icon} alt="redirect_icon" />
+                      </button>
+                    </td>
+                    <td px-4 py-3>
+                      <button
+                        onClick={() => handleDelete(product._id)}
+                        className="gap-1 px-1.5 md:px-3.5 py-2 bg-orange-600 text-white rounded-md"
+                      >
+                        Delete
                       </button>
                     </td>
                   </tr>

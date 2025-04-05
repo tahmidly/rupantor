@@ -15,12 +15,12 @@ const Navbar = () => {
       <nav className="flex flex-wrap items-center justify-between gap-4 px-6 md:px-16 lg:px-32 py-3 border-b border-gray-300 text-gray-700">
         {/* Logo & Desktop Search */}
         <div className="flex items-center gap-9 w-full md:w-auto flex-1">
-          {/* <Image
-            className="cursor-pointer w-14 md:w-20"
+          <Image
+            className="cursor-pointer w-14 md:w-16 rounded-md"
             onClick={() => router.push('/')}
             src={assets.logo}
             alt="logo"
-          /> */}
+          />
 
           {/* Desktop Search */}
           <div className="hidden md:flex items-center h-12 border border-orange-600 rounded-full overflow-hidden w-full max-w-md">
@@ -41,16 +41,19 @@ const Navbar = () => {
         {/* Navigation Links (hidden on mobile) */}
         <div className="flex items-center gap-4 lg:gap-8 max-md:hidden">
           <Link href="/" className="hover:text-orange-600 transition">
-            Home
+            হোম
           </Link>
           <Link href="/all-products" className="hover:text-orange-600 transition">
-            Shop
+            পণ্যসমূহ
           </Link>
-          <Link href="/" className="hover:text-orange-600 transition">
-            About Us
+          <Link href="/womens" className="hover:text-orange-600 transition">
+            নারীদের পণ্য
           </Link>
-          <Link href="/" className="hover:text-orange-600 transition">
-            Contact
+          <Link href="/mens" className="hover:text-orange-600 transition">
+            পুরুষদের পণ্য
+          </Link>
+          <Link href="/kids" className="hover:text-orange-600 transition">
+            শীশুদের পণ্য
           </Link>
           {isSeller && (
             <button

@@ -11,7 +11,7 @@ const AddProduct = () => {
   const [files, setFiles] = useState([]);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('Earphone');
+  const [category, setCategory] = useState('বোরখা');
   const [price, setPrice] = useState('');
   const [offerPrice, setOfferPrice] = useState('');
 
@@ -52,7 +52,7 @@ const AddProduct = () => {
         setDescription('');
         setPrice('');
         setOfferPrice('');
-        setCategory('Earphone');
+        setCategory('বোরখা');
       } else {
         toast.error(data.message || 'Something went wrong');
       }
@@ -136,13 +136,19 @@ const AddProduct = () => {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             >
-              <option value="Earphone">Earphone</option>
-              <option value="Headphone">Headphone</option>
-              <option value="Watch">Watch</option>
-              <option value="Smartphone">Smartphone</option>
-              <option value="Laptop">Laptop</option>
-              <option value="Camera">Camera</option>
-              <option value="Accessories">Accessories</option>
+              <option value="বোরখা">বোরখা</option>
+              <option value="সেমি-লং-খিমার">সেমি লং খিমার</option>
+              <option value="শর্ট-হিজাব">শর্ট হিজাব</option>
+              <option value="ব্রা">ব্রা</option>
+              <option value="পেন্টি">পেন্টি</option>
+              <option value="প্লাজু">প্লাজু</option>
+              <option value="নাইট-ড্রেস">নাইট ড্রেস</option>
+              <option value="পায়জামা">পায়জামা</option>
+              <option value="পাঞ্জাবি">পাঞ্জাবি</option>
+              <option value="টি-শার্ট">টি শার্ট</option>
+              <option value="থ্রী-পিস">থ্রী পিস</option>
+              <option value="শাড়ি">শাড়ি</option>
+              <option value="শিশুদের-পণ্য">শিশুদের পণ্য</option>
             </select>
           </div>
           <div className="flex flex-col gap-1 w-32">
